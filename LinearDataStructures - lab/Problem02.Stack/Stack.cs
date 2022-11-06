@@ -6,36 +6,73 @@
 
     public class Stack<T> : IAbstractStack<T>
     {
-        private Node<T> _top;
+        private class Node
+        {
+            public Node(T element, Node next)
+            {
+                this.Element = element;
+                this.Next = next;
+            }
+
+            public Node(T element)
+            {
+                this.Element = element;
+            }
+            public T Element { get; set; }
+            public Node Next { get; set; }
+        }
+        
+        private Node top;
 
         public int Count { get; private set; }
 
         public bool Contains(T item)
         {
-            throw new NotImplementedException();
+            var node = this.top;
+            while (node != null)
+            {
+                if (node.Element.Equals(item)) return true;
+                node = node.Next;
+            }
+
+            return false;
         }
 
         public T Peek()
         {
-            throw new NotImplementedException();
+            if (this.top == null) throw new InvalidOperationException();
+            return this.top.Element;
         }
 
         public T Pop()
         {
-            throw new NotImplementedException();
+            if (this.Count == 0) throw new InvalidOperationException();
+            
+            var oldTop = this.top;
+            this.top = oldTop.Next;
+            this.Count--;
+            return oldTop.Element;
         }
 
         public void Push(T item)
         {
-            throw new NotImplementedException();
+            var node = new Node(item, this.top);
+            this.top = node;
+
+            this.Count++;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            var node = this.top;
+            while (node != null)
+            {
+                yield return node.Element;
+                node = node.Next;
+            }
         }
 
-        IEnumerator IEnumerable.GetEnumerator() 
-            => throw new NotImplementedException();
+        IEnumerator IEnumerable.GetEnumerator()
+            => this.GetEnumerator();
     }
 }
