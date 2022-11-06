@@ -6,36 +6,80 @@
 
     public class Queue<T> : IAbstractQueue<T>
     {
-        private Node<T> _head;
+        public class Node
+        {
+            public Node(T item)
+            {
+                this.Element = item;
+            }
+            public T Element { get; set; }
+            public Node Next { get; set; }
+        }
+        
+        private Node head;
 
         public int Count { get; private set; }
 
         public bool Contains(T item)
         {
-            throw new NotImplementedException();
+            var node = this.head;
+            while (node != null)
+            {
+                if (node.Element.Equals(item)) return true;
+                node = node.Next;
+            }
+
+            return false;
         }
 
         public T Dequeue()
         {
-            throw new NotImplementedException();
+            if (this.head == null) throw new InvalidOperationException();
+            var oldHead = this.head;
+
+            var newHead = oldHead.Next;
+            this.head = newHead;
+            this.Count--;
+            
+            return oldHead.Element;
         }
 
         public void Enqueue(T item)
         {
-            throw new NotImplementedException();
+            if (this.head == null)
+            {
+                this.head = new Node(item);
+                this.Count++;
+                return;
+            }
+
+            var node = this.head;
+            while (node.Next != null)
+            {
+                node = node.Next;
+            }
+
+            node.Next = new Node(item);
+            this.Count++;
         }
 
         public T Peek()
         {
-            throw new NotImplementedException();
+            if (this.head == null) throw new InvalidOperationException();
+            return this.head.Element;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            var node = this.head;
+            while (node != null)
+            {
+                yield return node.Element;
+                node = node.Next;
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
-            => throw new NotImplementedException();
+            => this.GetEnumerator();
     }
 }
