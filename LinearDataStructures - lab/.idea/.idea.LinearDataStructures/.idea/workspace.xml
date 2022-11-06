@@ -28,15 +28,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -85,6 +85,32 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SinglyLinkedList.Tests/SinglyLinkedListTests.cs</url>
+          <line>96</line>
+          <properties documentPath="D:\Orion\Documents\GitHub\DatsStructuresCSharp\LinearDataStructures - lab\SinglyLinkedList.Tests\SinglyLinkedListTests.cs" initialLine="96" containingFunctionPresentation="method 'RemoveLastShouldWorkAsExpected'">
+            <startOffsets>
+              <option value="2841" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2872" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Problem04.SinglyLinkedList/SinglyLinkedList.cs</url>
+          <line>87</line>
+          <properties documentPath="D:\Orion\Documents\GitHub\DatsStructuresCSharp\LinearDataStructures - lab\Problem04.SinglyLinkedList\SinglyLinkedList.cs" initialLine="87" containingFunctionPresentation="method 'RemoveLast'">
+            <startOffsets>
+              <option value="2050" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2051" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
