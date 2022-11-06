@@ -99,19 +99,6 @@
           </properties>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Problem04.SinglyLinkedList/SinglyLinkedList.cs</url>
-          <line>87</line>
-          <properties documentPath="D:\Orion\Documents\GitHub\DatsStructuresCSharp\LinearDataStructures - lab\Problem04.SinglyLinkedList\SinglyLinkedList.cs" initialLine="87" containingFunctionPresentation="method 'RemoveLast'">
-            <startOffsets>
-              <option value="2050" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2051" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
