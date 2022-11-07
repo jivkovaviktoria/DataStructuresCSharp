@@ -25,11 +25,13 @@
         {
             get
             {
-                throw new NotImplementedException();
+                if (!IsValid(index)) throw new IndexOutOfRangeException();
+                return this.items[this.Count-1-index];
             }
             set
             {
-                throw new NotImplementedException();
+                if (!IsValid(index)) throw new IndexOutOfRangeException();
+                this.items[index] = value;
             }
         }
 
@@ -37,42 +39,85 @@
 
         public void Add(T item)
         {
-            throw new NotImplementedException();
+            if (this.items.Length == this.Count) AddRange();
+            this.items[this.Count++] = item;
+        }
+
+        private void AddRange()
+        {
+            var newItemsArray = new T[this.items.Length * 2];
+            for (int i = 0; i < this.Count; i++) newItemsArray[i] = this.items[i];
+
+            this.items = newItemsArray;
         }
 
         public bool Contains(T item)
         {
-            throw new NotImplementedException();
+            if (this.Count == 0) return false;
+            return this.IndexOf(item) != -1;
         }
+        
 
         public int IndexOf(T item)
         {
-            throw new NotImplementedException();
+            var index = -1;
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (this.items[i].Equals(item)) index = i;
+            }
+
+            if (index == -1) return -1;
+            
+            return this.Count-1-index;
         }
 
         public void Insert(int index, T item)
         {
-            throw new NotImplementedException();
+            if (!IsValid(index)) throw new IndexOutOfRangeException();
+            AddRange();
+
+            for (int i = this.Count; i >= this.Count - index; i--)
+            {
+                items[i] = items[i - 1];
+            }
+
+            items[Count - index] = item;
+            this.Count++;
         }
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            var index = this.IndexOf(item);
+            if (index != -1)
+            {
+                this.RemoveAt(index);
+                return true;
+            }
+
+            return false;
         }
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            if (!IsValid(index)) throw new IndexOutOfRangeException();
+
+            index = this.Count - 1 - index;
+            for (int i = index; i < this.Count; i++)
+            {
+                this.items[i] = this.items[i + 1];
+            }
+
+            this.items[this.Count-1] = default;
+            this.Count--;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (int i = this.Count-1; i >= 0; i--) yield return this.items[i];
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+
+        private bool IsValid(int index) => index >= 0 && index < this.Count;
     }
 }
