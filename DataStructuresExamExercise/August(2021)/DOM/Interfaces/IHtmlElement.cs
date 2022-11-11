@@ -12,5 +12,11 @@
         List<IHtmlElement> Children { get; }
 
         Dictionary<string, string> Attributes { get; }
+
+        bool HasId(string id);
+
+        bool AddAttribute(string key, string value);
+
+        bool RemoveAttribute(string key);
     }
 }
