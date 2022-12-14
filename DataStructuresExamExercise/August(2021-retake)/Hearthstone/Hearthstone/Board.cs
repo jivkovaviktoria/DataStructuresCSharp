@@ -5,16 +5,15 @@ using System.Text;
 
 public class Board : IBoard
 {
-    private HashSet<string> cardNames = new HashSet<string>();
     private HashSet<Card> cards = new HashSet<Card>();
-    public bool Contains(string name) => this.cardNames.Contains(name);
+    
+    public bool Contains(string name) => this.cards.Any(x => x.Name == name);
 
-    public int Count() => this.cardNames.Count;
+    public int Count() => this.cards.Count;
 
     public void Draw(Card card)
     {
         if (this.Contains(card.Name)) throw new ArgumentException();
-        this.cardNames.Add(card.Name);
         this.cards.Add(card);
     }
 
@@ -42,10 +41,10 @@ public class Board : IBoard
         if (attacker == null || attacked == null) throw new ArgumentException();
         if (attacked.Level != attacker.Level) throw new ArgumentException();
 
-        if (attacked.Health > 0)
+        if (attacked.Health > 0 && attacker.Health > 0)
         {
             attacked.Health -= attacker.Damage;
-            
+
             if (attacked.Health <= 0)
             {
                 attacked.CanPlay = false;
@@ -60,18 +59,11 @@ public class Board : IBoard
 
         var card = this.cards.FirstOrDefault(x => x.Name == name);
         this.cards.Remove(card);
-        this.cardNames.Remove(name);
     }
 
     public void RemoveDeath()
     {
-        var toRemove = this.cards.Where(x => x.Health <= 0);
-
-        foreach (var card in toRemove)
-        {
-            this.cards.Remove(card);
-            this.cardNames.Remove(card.Name);
-        }
+        this.cards = this.cards.Where(x => x.Health > 0).ToHashSet();
     }
 
     public IEnumerable<Card> SearchByLevel(int level)

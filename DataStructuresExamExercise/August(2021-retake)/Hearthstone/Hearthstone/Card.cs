@@ -25,4 +25,9 @@ public class Card
     public int Level { get; set; }
     
     public bool CanPlay { get; set; }
+
+    public override bool Equals(object obj)
+    {
+        return this.Name == ((Card)obj).Name;
+    }
 }
