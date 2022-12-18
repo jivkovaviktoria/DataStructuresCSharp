@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Exam.DeliveriesManager
+﻿namespace Exam.DeliveriesManager
 {
     public class Airline
     {
@@ -16,6 +14,5 @@ namespace Exam.DeliveriesManager
         public string Name { get; set; }
 
         public double Rating { get; set; }
-        public List<Flight> Flights { get; set; }
     }
 }

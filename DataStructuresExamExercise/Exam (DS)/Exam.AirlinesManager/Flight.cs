@@ -20,6 +20,5 @@
         public string Destination { get; set; }
 
         public bool IsCompleted { get; set; }
-        public Airline Airline { get; set; }
     }
 }
